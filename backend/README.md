@@ -1,4 +1,4 @@
-# Encryption Flask API
+# Periodic Table Encoding/Decoding Flask API
 
 Small Flask backend for a Render Web Service.
 

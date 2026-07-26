@@ -1,4 +1,4 @@
-# Periodic Table Render App
+# Periodic Table Encoding/Decoding Render App
 
 This project deploys as two Render services:
 

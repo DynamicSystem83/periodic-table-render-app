@@ -55,7 +55,7 @@ function App() {
         <div className="title-row">
           <div>
             <p className="eyebrow">Render Flask + React</p>
-            <h1 id="page-title">Periodic Table Encoding</h1>
+            <h1 id="page-title">Periodic Table Encoding/Decoding</h1>
           </div>
           <button className="icon-button" type="button" onClick={reset} aria-label="Reset form">
             <RotateCcw size={20} aria-hidden="true" />
