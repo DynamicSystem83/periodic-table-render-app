@@ -52,7 +52,13 @@ def create_app():
 
 
     @app.post("/api/periodic-table-decode-simple")
-    def decode_simple(text):
+    def decode_simple():
+        payload = request.get_json(silent=True) or {}
+        text = payload.get("text", "")
+
+        if not isinstance(text, str):
+            return jsonify({"error": "text must be a string"}), 400
+
         first_sentence = text.split(".")[0]
         if len(first_sentence)%2 == 0:
             shift_symbol = "".join(first_sentence[0:2])
@@ -84,7 +90,13 @@ def create_app():
 
 
     @app.post("/api/periodic-table-encode-complex")
-    def encode_complex(text):
+    def encode_complex():
+        payload = request.get_json(silent=True) or {}
+        text = payload.get("text", "")
+
+        if not isinstance(text, str):
+            return jsonify({"error": "text must be a string"}), 400
+
         shift_amount = rng.integers(low=1, high=10)
         shift_symbol = element(int(shift_amount)).symbol
         shift_symbol = shift_symbol.upper()
@@ -124,7 +136,13 @@ def create_app():
 
 
     @app.post("/api/periodic-table-decode-complex")
-    def decode_complex(text):
+    def decode_complex():
+        payload = request.get_json(silent=True) or {}
+        text = payload.get("text", "")
+
+        if not isinstance(text, str):
+            return jsonify({"error": "text must be a string"}), 400
+
         first_sentence = text.split(".")[0]
         if len(first_sentence)%2 == 0:
             shift_symbol = "".join(first_sentence[0:2])
