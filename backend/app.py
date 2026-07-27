@@ -86,7 +86,7 @@ def create_app():
                 else:
                     decoded_text += chr(number + ord("a"))
 
-        return decoded_text
+        return jsonify({"output": decoded_text})
 
 
     @app.post("/api/periodic-table-encode-complex")
@@ -132,7 +132,7 @@ def create_app():
                 encoded_text += atomic_number_to_symbol(number)
             else:
                 encoded_text += character
-        return encoded_text
+        return jsonify({"output": encoded_text})
 
 
     @app.post("/api/periodic-table-decode-complex")
@@ -175,7 +175,7 @@ def create_app():
             else:
                 decoded_text += chr(number + ord("a"))
 
-        return decoded_text
+        return jsonify({"output": decoded_text})
 
 
     return app
