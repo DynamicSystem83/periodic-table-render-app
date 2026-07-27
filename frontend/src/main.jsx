@@ -101,22 +101,22 @@ function App() {
               />
             </label>
 
-            <button className="primary-button" type="button" onClick={() => processText("encode_simple")} disabled={status === "loading"}>
+            <button className="primary-button" type="button" onClick={() => processAction("encode_simple")} disabled={status === "loading"}>
               <span>{status === "loading" ? "Encoding" : "Encode Simple"}</span>
               <ArrowRight size={18} aria-hidden="true" />
             </button>
 
-            <button className="primary-button" type="button" onClick={() => processText("decode_simple")} disabled={status === "loading"}>
+            <button className="primary-button" type="button" onClick={() => processAction("decode_simple")} disabled={status === "loading"}>
               <span>{status === "loading" ? "Decoding" : "Decode Simple"}</span>
               <ArrowRight size={18} aria-hidden="true" />
             </button>
 
-            <button className="primary-button" type="button" onClick={() => processText("encode_complex")} disabled={status === "loading"}>
+            <button className="primary-button" type="button" onClick={() => processAction("encode_complex")} disabled={status === "loading"}>
               <span>{status === "loading" ? "Encoding" : "Encode Complex"}</span>
               <ArrowRight size={18} aria-hidden="true" />
             </button>
 
-            <button className="primary-button" type="button" onClick={() => processText("decode_complex")} disabled={status === "loading"}>
+            <button className="primary-button" type="button" onClick={() => processAction("decode_complex")} disabled={status === "loading"}>
               <span>{status === "loading" ? "Decoding" : "Decode Complex"}</span>
               <ArrowRight size={18} aria-hidden="true" />
             </button>
