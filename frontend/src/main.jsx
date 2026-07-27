@@ -24,30 +24,47 @@ function App() {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ text, shift })
+          body: JSON.stringify({ text })
         });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || "Unable to process the text.");
-        }
-
-        setOutput(data.output);
       }
       else if (action == "decode_simple")
       {
-        setOutput("decode_simple");
+        const response = await fetch(`${API_BASE_URL}/api/periodic-table-decode-simple`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ text })
+        });
       }
       else if (action == "encode_complex")
       {
-        setOutput("encode_complex");
+        const response = await fetch(`${API_BASE_URL}/api/periodic-table-encode-complex`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ text })
+        });
       }
       else
       {
-        setOutput("decode_complex");
+        const response = await fetch(`${API_BASE_URL}/api/periodic-table-decode-complex`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ text })
+        });
       }
 
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Unable to process the text.");
+      }
+
+      setOutput(data.output);
 
       setStatus("done");
     } catch (err) {
