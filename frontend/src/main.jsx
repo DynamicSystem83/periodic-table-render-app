@@ -26,6 +26,13 @@ function App() {
           },
           body: JSON.stringify({ text })
         });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Unable to process the text.");
+        }
+
+        setOutput(data.output);
       }
       else if (action == "decode_simple")
       {
@@ -36,6 +43,13 @@ function App() {
           },
           body: JSON.stringify({ text })
         });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Unable to process the text.");
+        }
+
+        setOutput(data.output);
       }
       else if (action == "encode_complex")
       {
@@ -46,6 +60,13 @@ function App() {
           },
           body: JSON.stringify({ text })
         });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Unable to process the text.");
+        }
+
+        setOutput(data.output);
       }
       else
       {
@@ -56,15 +77,15 @@ function App() {
           },
           body: JSON.stringify({ text })
         });
+        const data = await response.json();
+
+        if (!response.ok) {
+          throw new Error(data.error || "Unable to process the text.");
+        }
+
+        setOutput(data.output);
       }
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || "Unable to process the text.");
-      }
-
-      setOutput(data.output);
 
       setStatus("done");
     } catch (err) {
