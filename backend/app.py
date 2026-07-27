@@ -83,6 +83,10 @@ def create_app():
                 number = number%27
                 app.logger.error("Informational message in terminal %d" % number)
                 print("Informational message in terminal %d" % number)
+
+                console.log("Backend response:", {
+                number: number,
+                });
                 if number == 36:
                     decoded_text += " "
                 else:
