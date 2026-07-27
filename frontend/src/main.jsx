@@ -128,17 +128,6 @@ function App() {
           </label>
 
           <div className="controls">
-            <label className="shift-control">
-              <span>Shift</span>
-              <input
-                type="number"
-                min="-25"
-                max="25"
-                value={shift}
-                onChange={(event) => setShift(event.target.value)}
-              />
-            </label>
-
             <button className="primary-button" type="button" onClick={() => processAction("encode_simple")} disabled={status === "loading"}>
               <span>{status === "loading" ? "Encoding" : "Encode Simple"}</span>
               <ArrowRight size={18} aria-hidden="true" />

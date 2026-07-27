@@ -81,6 +81,7 @@ def create_app():
                 number = symbol_to_atomic_number(symbol)
                 number = number - shift_amount - 1
                 number = number%27
+                app.logger.info("Informational message in terminal %d" % number)
                 if number == 36:
                     decoded_text += " "
                 else:
