@@ -12,27 +12,43 @@ function App() {
   const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
 
-  async function processText(event) {
-    event.preventDefault();
+  async function processAction(action) {
     setStatus("loading");
     setError("");
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/periodic-table-encode-simple`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ text, shift })
-      });
+      if (action == "encode_simple")
+      {
+        const response = await fetch(`${API_BASE_URL}/api/periodic-table-encode-simple`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ text, shift })
+        });
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error(data.error || "Unable to process the text.");
+        if (!response.ok) {
+          throw new Error(data.error || "Unable to process the text.");
+        }
+
+        setOutput(data.output);
+      }
+      else if (action == "decode_simple")
+      {
+        setOutput("decode_simple");
+      }
+      else if (action == "encode_complex")
+      {
+        setOutput("encode_complex");
+      }
+      else
+      {
+        setOutput("decode_complex");
       }
 
-      setOutput(data.output);
+
       setStatus("done");
     } catch (err) {
       setOutput("");
@@ -62,7 +78,7 @@ function App() {
           </button>
         </div>
 
-        <form className="converter" onSubmit={processText}>
+        <form className="converter" onSubmit={(event) => event.preventDefault()}>
           <label className="field-group">
             <span>Input text</span>
             <textarea
@@ -85,8 +101,20 @@ function App() {
               />
             </label>
 
-            <button className="primary-button" type="submit" disabled={status === "loading"}>
-              <span>{status === "loading" ? "Processing" : "Process"}</span>
+            <button className="primary-button" type="button" onClick={() => processText("encode_simple")} disabled={status === "loading"}>
+              <span>{status === "loading" ? "Encoding" : "Encode Simple"}</span>
+              <ArrowRight size={18} aria-hidden="true" />
+
+            <button className="primary-button" type="button" onClick={() => processText("decode_simple")} disabled={status === "loading"}>
+              <span>{status === "loading" ? "Decoding" : "Decode Simple"}</span>
+              <ArrowRight size={18} aria-hidden="true" />
+
+            <button className="primary-button" type="button" onClick={() => processText("encode_complex")} disabled={status === "loading"}>
+              <span>{status === "loading" ? "Encoding" : "Encode Complex"}</span>
+              <ArrowRight size={18} aria-hidden="true" />
+
+            <button className="primary-button" type="button" onClick={() => processText("decode_complex")} disabled={status === "loading"}>
+              <span>{status === "loading" ? "Decoding" : "Decode Complex"}</span>
               <ArrowRight size={18} aria-hidden="true" />
             </button>
           </div>
