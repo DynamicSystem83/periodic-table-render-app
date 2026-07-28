@@ -82,7 +82,7 @@ def create_app():
                 number = number - shift_amount - 1
                 number = number%27
                 #app.logger.error("Informational message in terminal %d" % number)
-                #print("Informational message in terminal: " % number, flush=True)
+                print("Informational message in terminal: ", number, flush=True)
 
                 if number == 36:
                     decoded_text += " "
