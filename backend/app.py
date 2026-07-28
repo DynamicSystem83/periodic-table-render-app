@@ -84,7 +84,7 @@ def create_app():
                 #app.logger.error("Informational message in terminal %d" % number)
                 print("Informational message in terminal: ", number, flush=True)
 
-                if number == 36:
+                if number == 26:
                     decoded_text += " "
                 else:
                     decoded_text += chr(number + ord("a"))
